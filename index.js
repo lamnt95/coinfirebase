@@ -17,6 +17,11 @@ app.use(express.static('static'));
 
 app.get('/', (req, res) => {
   console.log(fb.name); // '[DEFAULT]'
+  var db = admin.database();
+  var ref = db.ref('cache');
+  ref.once('value', function (snapshot) {
+    console.log(snapshot.val());
+  });
   res.send('ok');
 });
 
