@@ -17,7 +17,6 @@ app.use(express.static('static'));
 
 app.get('/', (req, res) => {
   console.log(fb.name); // '[DEFAULT]'
-  const db = admin.getDatabase();
   res.send('ok');
 });
 
