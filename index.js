@@ -17,8 +17,8 @@ app.use(express.static('static'));
 
 app.get('/', (req, res) => {
   console.log(fb.name); // '[DEFAULT]'
-  var db = admin.database();
-  var ref = db.ref('cache');
+  var db = admin.database(fb);
+  var ref = db.ref('/cryptoogateway-default-rtdb/cache');
   ref.once('value', function (snapshot) {
     console.log(snapshot.val());
   });
