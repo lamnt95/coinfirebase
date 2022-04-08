@@ -7,7 +7,7 @@ var admin = require('firebase-admin');
 
 var serviceAccount = require('./serviceAccountKey.json');
 
-const fb = admin.initializeApp({
+var fb = admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
   databaseURL:
     'https://cryptoogateway-default-rtdb.asia-southeast1.firebasedatabase.app',
@@ -18,7 +18,7 @@ app.use(express.static('static'));
 app.get('/', (req, res) => {
   console.log(fb.name); // '[DEFAULT]'
   var db = admin.database(fb);
-  var ref = db.ref('/cryptoogateway-default-rtdb/cache');
+  var ref = db.ref('/cache');
   ref.once('value', function (snapshot) {
     console.log(snapshot.val());
   });
